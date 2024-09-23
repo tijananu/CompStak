@@ -1,0 +1,34 @@
+To fulfill this requirement, I made corrections and changes to the model from the first request (removing attributes that are not relevant since it was not specified which industry it pertains to, as well as the dimensions Promotion and Status). The Fact_Transaction table retains the same structure as in the previous request, with the addition of information about which store the transaction took place in.
+
+To enable tracking of stores in different regions, I deviated from the star schema and created a snowflake schema where the Store has a foreign key to the Region dimension. The Region_Id could also be included in the Fact table, but that way I the information about which regions all the stores are located in would be lost, including those for which, for example, there were no transactions on the selected day or more specifically, at that hour. The snowflake schema would also retain information about which region the store is in, and it would allow for analytical tracking of sales at the store level by regions based on the relationship between these two tables.
+
+Since Fact_Transaction also has a foreign key to the customer and the store, it would be easy to aggregate the customer's purchases at the store level and draw conclusions about trends and customer behavior. 
+
+I modeled the tracking of inventory levels as a separate fact table – Fact_Inventory_Level, as it also tracks changes in inventory status metrics by the day when the inventory count was conducted, in relation only to the dimensions of Product and Store. Through these two joint dimensional tables, it would be possible to compare the inventory level on the day of the transaction. As an additional indicator in this table, I introduced a flag called Relocation_Point, which would serve as an indicator that the inventory is at a critical level.
+
+Additionally, it is assumed that columns tracking the timestamp of record creation and modification, as well as a flag indicating whether the record is deleted, would be included in the tables.
+
+To provide additional context, below are examples of the attributes for the Dim_Store, Dim_Region and Fact_Inventory_Level tables that were not part of the previous model.
+
+-	Attributes of Dim_Store table:
+
+Attribute	Example
+Store_Id	‘123456789’
+Store_Name	’Retail store X’
+Region_Id	‘123433737’
+
+-	Attributes of Dim_Region table:
+
+Attribute	Example
+Region_Id	‘123433737’
+Region_Name	‘Europe
+
+-	Attributes of Fact_Inventory_Level table:
+
+Attribute	Example
+Inventory_Id	’1756890282’
+Product_Id	‘111111111’
+Store_Id	‘123456789’
+Inventory_Date	‘2024-09-23’
+Quantity_Available	‘25’
+Relocation_Point	‘0’
