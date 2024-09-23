@@ -6,9 +6,13 @@ The fact table is described by the following dimensions:
 -	Customer, which is a catalog of all customers with basic contact information and user addresses, as well as a denormalized dimension called 'Customer_Type' that indicates whether the customer has a status like 'Platinum,' 'Gold,' or 'Silver.' Customer type is stored as a Slowly Changing Dimension Type 1 (SCD 1) because tracking changes in customer status is not necessary for reporting, only the current status is needed.
 -	Promotion, with the name of the promotion on which the discount is based.
 -	Transaction status, with statuses such as 'Pending,' 'In progress,' and 'Completed.'
+
 Additionally, it is assumed that columns tracking the timestamp of record creation and modification, as well as a flag indicating whether the record is deleted, would be included in the tables.
+
 For additional context, examples of attribute values for each table are provided below:
--	Attributes of Fact_Transaction table:
+
+1. Attributes of Fact_Transaction table:
+
 Attribute	Example
 Transaction_Id	‘123456789’
 Date	’2024-09-23’
@@ -24,7 +28,8 @@ Total_Amount	‘90.00
 Currency	USD
 Status_Id	‘3’
 
-Attributes of Dim_Date table:
+2. Attributes of Dim_Date table:
+
 Attribute	Example
 Date	‘2024-09-23’
 Year	‘2024’
@@ -35,7 +40,8 @@ Day_Of_Week	‘Monday’
 Quarter_Sort	‘3’
 Quarter	‘Q3’
 
-Attributes of Dim_Time table:
+3. Attributes of Dim_Time table:
+
 Attribute	Example
 Time	’11:30:25 AM’
 Hour	‘11’
@@ -43,12 +49,14 @@ AM_PM	‘AM’
 Minute	‘30’
 Second	‘25’
 
-Attributes of Dim_Status table:
+4. Attributes of Dim_Status table:
+
 Attribute	Example
 Status_Id	’3’
 Status_Name	‘Completed’
 
-Attributes of Dim_Customer Table:
+5. Attributes of Dim_Customer Table:
+
 Attribute	Example
 Customer_Id	‘2341234050003003’
 First_Name	’John’
@@ -61,7 +69,8 @@ City	‘New York’
 Adress	‘Example 1’
 Customer_Type	‘Platinum
 
-Attributes of Dim_Product Table:
+6. Attributes of Dim_Product Table:
+
 Attribute	Example
 Product_Id	‘6854654050003003’
 Product_Code	’Z100000001’
@@ -71,7 +80,8 @@ Product_Colour	‘Green’
 Product_Size	‘XS’
 Product_Collection	‘Winter collection’
 
-Attributes of Dim_Promotion Table:
+7. Attributes of Dim_Promotion Table:
+
 Attribute	Example
 Product_Id	‘6854654050003003’
 Promotion_Name	’Black Friday’
