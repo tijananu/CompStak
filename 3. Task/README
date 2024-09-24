@@ -4,7 +4,7 @@ To enable tracking of stores in different regions, I deviated from the star sche
 
 Since Fact_Transaction also has a foreign key to the customer and the store, it would be easy to aggregate the customer's purchases at the store level and draw conclusions about trends and customer behavior. 
 
-I modeled the tracking of inventory levels as a separate fact table – Fact_Inventory_Level, as it also tracks changes in inventory status metrics by the day when the inventory count was conducted, in relation only to the dimensions of Product and Store. Through these two joint dimensional tables, it would be possible to compare the inventory level on the day of the transaction. As an additional indicator in this table, I introduced a flag called Relocation_Point, which would serve as an indicator that the inventory is at a critical level.
+I modeled the tracking of inventory levels as a separate fact table – Fact_Inventory_Level, as it also tracks changes in inventory status metrics by the day when the inventory count was conducted, in relation only to the dimensions of Product, Store and Date. Through these three joint dimensional tables, it would be possible to compare the inventory level on the day of the transaction. As an additional indicator in this table, I introduced a flag called Relocation_Point, which would serve as an indicator that the inventory is at a critical level.
 
 Additionally, it is assumed that columns tracking the timestamp of record creation and modification, as well as a flag indicating whether the record is deleted, would be included in the tables.
 
