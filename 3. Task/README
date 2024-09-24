@@ -21,7 +21,9 @@ Region_Id	‘123433737’
 
 Attribute	Example
 Region_Id	‘123433737’
-Region_Name	‘Europe
+Region_Name	‘Europe’
+Longitude ‘38.3433737’
+Latitude ‘22.8282827’
 
 -	Attributes of Fact_Inventory_Level table:
 
